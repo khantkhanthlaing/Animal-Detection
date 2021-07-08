@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Animal Detection</title>
+  </head>
+  <body>
+    <h1>Please Upload your image to determine breed of dogs and cats</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <p>
+      <label for="imageUpload" class="upload-label">
+            Choose...
+      </label>
+      </p>
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+    <hr>
+    {% for file in files %}
+      <img src="{{ url_for('upload', filename=file) }}" style="width: 350px">
+    {% endfor %}
+
+  </body>
+</html>
