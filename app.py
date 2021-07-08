@@ -39,7 +39,10 @@ def upload_files():
             abort(400)
         file_path = os.path.join(app.config['UPLOAD_PATH'], filename)
         uploaded_file.save(file_path)
-        detect.animal_detector(file_path)
+        result = detect.animal_detector(file_path)
+        name = os.path.splitext(filename)[0]
+        file_path2 = os.path.join(app.config['UPLOAD_PATH'], name+'1.jpg')
+        result.save(file_path2)
     return redirect(url_for('index'))
 
 @app.route('/uploads/<filename>')
